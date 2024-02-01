@@ -1,10 +1,25 @@
 import numpy as np
+from tkinter import filedialog
 import cv2
 
+
+def openFile():
+    filePath = filedialog.askopenfilename(initialdir="C:\\Users\\willr\\Documents\\GitHub\\WaldoFinder",
+                                          title="File to Read?")
+    #gets the file needed for input with data
+    return filePath
+
+
+
+
+waldoMap = openFile()
+waldoToFind = openFile()
+
+
 #read in photo to scan use 0 to make these grey scale due to the alogothim used in cv2
-img = cv2.imread('C:\\Users\\willr\\Documents\\GitHub\\OPENCV\\Learn\\waldo\\FindHard.jpg', 0)
+img = cv2.imread(waldoMap, 0)
 #item to look for use 0 to make these grey scale due to the alogothim used in cv2
-template = cv2.imread('C:\\Users\\willr\\Documents\\GitHub\\OPENCV\\Learn\\waldo\\WaldoForBeach.jpg', 0)
+template = cv2.imread(waldoToFind, 0)
 
 #gets the shape
 h, w = template.shape
@@ -15,9 +30,9 @@ h, w = template.shape
 
 
 # all the medthods for matching during testing will see which one works best
-methods = [cv2.TM_CCOEFF, cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
-#after testing cv2.TM_CCORR wasnt the best
 #methods = [cv2.TM_CCOEFF, cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
+#after testing cv2.TM_CCORR wasnt the best
+methods = [cv2.TM_CCOEFF, cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
 
 
 for curr in methods:
