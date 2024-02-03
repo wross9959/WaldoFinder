@@ -1,9 +1,9 @@
 import numpy as np
 from tkinter import filedialog
 import cv2
-import tkinter as tk
-from tkinter import Button, Label, Toplevel
-from PIL import Image, ImageTk
+# import tkinter as tk
+# from tkinter import Button, Label, Toplevel
+#from PIL import Image, ImageTk
 # 
 # Make a GUI to select which photo you want to find waldo
 # use tinker or somethinf else
@@ -62,16 +62,19 @@ waldoMap = openFile()
 waldoToFind = openFile()
 
 #test 1
-f1 = 0.7
+# f1 = 0.7
+# f2 = 0.7
+
+# # test 3
+# f1 = 0.5
+# f2 = 1.2
+
+# # test 3 on laptop
+f1 = 0.3
 f2 = 0.7
-
-# # test 3
-# f1 = 0.5
-# f2 = 1.2
-
-# # test 3
-# f1 = 0.5
-# f2 = 1.2
+# test 3 on 1440p ultrawide monitor
+#f1 = 0.7
+#f2 = 1.2
 
 #read in photo to scan use 0 to make these grey scale due to the alogothim used in cv2
 img = cv2.resize(cv2.imread(waldoMap, 0), (0,0), fx =f1, fy = f1)
